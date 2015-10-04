@@ -1,0 +1,54 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+	<script type="text/javascript" src="js/d3.js"></script>
+	<script type="text/javascript" src="js/d3.geom.js"></script>
+	<script type="text/javascript" src="js/d3.layout.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Sample Client-Server Web App</title>
+	</head> 
+	<body> 
+	
+	
+		<div data-role="page">
+		
+			<div data-role="header">
+				<!--HEADER CONTENT HERE-->
+			</div><!-- /header -->
+		
+			<!--MAIN CONTENT HERE-->
+			<div data-role="content">
+				<div class="container-fluid">
+					<h1>What is your gender?</h1>
+					<form action="store.php" method="post" data-ajax="false">
+						<fieldset data-role="controlgroup">
+							<legend>Select Gender:</legend>
+								<input type="radio" name="gender" id="radio-choice-1" value="female" checked="checked" />
+								<label for="radio-choice-1">Female</label>
+						
+								<input type="radio" name="gender" id="radio-choice-2" value="male"  />
+								<label for="radio-choice-2">Male</label>
+						</fieldset>
+						<input value="Submit" type="submit" data-role="button" data-icon="arrow-r"/>
+					</form>
+					
+					<a href="retrieve.php" data-role="button" data-icon="grid">Visualize Data Set</a>
+					
+				</div>
+			</div><!-- /content -->
+		
+		
+			<div data-role="footer">
+				<!--FOOT CONTENT HERE-->
+			</div><!-- /header -->
+		
+		
+		</div><!-- /page -->
+	
+	</body>
+</html>
