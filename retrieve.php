@@ -49,16 +49,18 @@
 					}
 					fclose($file);			// close file handle
 					$total = $FEMALE + $MALE + 1;
-					$total = ($total) > 2 ? $total : 2; 
+					$total = ($total) > 2 ? $total : 2;
+					$girl = "red";
+					$boy = "black";
 					?>
 					<h1>Data Collision Detection</h1>
 					<div id="body" class="container">
 						<svg width="50" height="50">
-							<circle cx="25" cy="25" r="25" fill="red" />
+							<circle cx="25" cy="25" r="25" fill="<?php echo $girl ?>" />
 						</svg>
 						<strong>Ladies</strong>
 						<svg width="50" height="50">
-							<circle cx="25" cy="25" r="25" fill="blue" />
+							<circle cx="25" cy="25" r="25" fill="<?php echo $boy ?>" />
 						</svg>
 						<strong>Gentlemen</strong>
 						<div id="footer" class="row">
@@ -105,7 +107,7 @@ function colourByPercentage(){
     var girls = <?php echo $FEMALE ?>;
     var boys = <?php echo $MALE ?>;
     var num = Math.random();
-    return (girls/(girls+boys)) > num ? "red" : "blue";
+    return (girls/(girls+boys)) > num ? "<?php echo $girl ?>" : "<?php echo $boy ?>";
 }
 svg.selectAll("circle")
     .data(nodes.slice(1))
