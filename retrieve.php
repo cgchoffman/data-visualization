@@ -51,11 +51,11 @@
 					$total = $FEMALE + $MALE + 1;
 					$total = ($total) > 2 ? $total : 2; 
 					?>
-					<h1>Data Retrieved</h1>
+					<h1>Data Collision Detection</h1>
 					<div id="body" class="container">
 						<div id="footer" class="row">
-						Collision Detection
-							<div id="hint" class="col-md-12">move the mouse to repel nodes</div>
+						
+							<div id="hint" class="col-md-12"></div>
 						</div>
 					</div>
 				</div>
@@ -72,8 +72,8 @@
 			
 		<script type="text/javascript">
 
-var w = "100%",
-    h = 800;
+var w = $(window).width(),
+    h = 400;
 var nodes = d3.range(<?php echo $total ?>).map(function() { return {radius: Math.random() * 12 + 4}; }),
     color = d3.scale.category10();
 
