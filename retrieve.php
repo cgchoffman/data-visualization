@@ -74,7 +74,6 @@
 
 var w = 400,
     h = 400;
-alert(<?php echo $total ?>);
 var nodes = d3.range(<?php echo $total ?>).map(function() { return {radius: Math.random() * 12 + 4}; }),
     color = d3.scale.category10();
 
