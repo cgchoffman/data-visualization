@@ -72,8 +72,8 @@
 			
 		<script type="text/javascript">
 
-var w = 400,
-    h = 400;
+var w = "100%",
+    h = 800;
 var nodes = d3.range(<?php echo $total ?>).map(function() { return {radius: Math.random() * 12 + 4}; }),
     color = d3.scale.category10();
 
@@ -90,7 +90,7 @@ root.fixed = true;
 force.start();
 
 var svg = d3.select("#hint").append("svg:svg")
-    //.attr("width", w)
+    .attr("width", w)
     .attr("height", h);
 
 function colourByPercentage(){
