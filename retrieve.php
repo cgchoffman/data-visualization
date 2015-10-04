@@ -53,6 +53,14 @@
 					?>
 					<h1>Data Collision Detection</h1>
 					<div id="body" class="container">
+						<svg width="50" height="50">
+							<circle cx="25" cy="25" r="25" fill="red" />
+						</svg>
+						<strong>Ladies</strong>
+						<svg width="50" height="50">
+							<circle cx="25" cy="25" r="25" fill="blue" />
+						</svg>
+						<strong>Gentlemen</strong>
 						<div id="footer" class="row">
 						
 							<div id="hint" class="col-md-12"></div>
@@ -103,7 +111,7 @@ svg.selectAll("circle")
     .data(nodes.slice(1))
     .enter().append("svg:circle")
     .attr("r", function(d) { return d.radius - 2; })
-    .style("fill", function(d, i) { return color(colourByPercentage()); });
+    .style("fill", function(d, i) { return colourByPercentage(); });
 
 force.on("tick", function(e) {
   var q = d3.geom.quadtree(nodes),
