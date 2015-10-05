@@ -24,11 +24,32 @@
 			<div data-role="content">
 				<div class="container-fluid">
 					<?php
-					global $FEMALE;
-					global $MALE;
 					$file = fopen('data/data.json', "r")           // open file
 							or exit('Data not found.
 							<a href="index.html" data-role="button" data-icon="back">Submit Again</a>');// or give err msg and exit
+					$linecount = 0;
+					while(!feof($file)){
+					  $line = fgets($file, 4096);
+					  $linecount = $linecount + substr_count($line, PHP_EOL);
+					}
+					fclose($file);			// close file handle
+
+					
+					$file = fopen('data/data.json', "r")           // open file
+							or exit('Data not found.
+							<a href="index.html" data-role="button" data-icon="back">Submit Again</a>');// or give err msg and exit
+					$skimmer = 1;
+					if($linecount >= 500 && $linecount < 1000)
+					{
+						$skimmer = 2;
+					} else if ($linecount >= 1000 && $linecount < 2000)
+					{
+						$skimmer = 3;	
+					} else if ($linecount >= 2000)
+					{
+						$skimmer= 4;
+					}
+						
 					while(!feof($file))                       // while eof not reached
 					{
 						$line = fgets($file);                 // get one line
@@ -47,11 +68,13 @@
 							}
 						}
 					}
+				
 					fclose($file);			// close file handle
 					$total = $FEMALE + $MALE + 1;
 					$total = ($total) > 2 ? $total : 2;
 					$girl = "red";
 					$boy = "black";
+					
 					?>
 					<h1>Data Collision Detection</h1>
 					<div id="body" class="container">
@@ -84,7 +107,7 @@
 
 var w = $(window).width(),
     h = 400;
-var nodes = d3.range(<?php echo $total ?>).map(function() { return {radius: Math.random() * 12 + 4}; }),
+var nodes = d3.range(<?php echo $total/$skimmer ?>).map(function() { return {radius: Math.random() * 12 + 4}; }),
     color = d3.scale.category10();
 
 var force = d3.layout.force()
@@ -98,7 +121,6 @@ root.radius = 0;
 root.fixed = true;
 
 force.start();
-
 var svg = d3.select("#hint").append("svg:svg")
     .attr("width", w)
     .attr("height", h);
@@ -107,7 +129,7 @@ function colourByPercentage(){
     var girls = <?php echo $FEMALE ?>;
     var boys = <?php echo $MALE ?>;
     var num = Math.random();
-    return (girls/(girls+boys)) > num ? "<?php echo $girl ?>" : "<?php echo $boy ?>";
+    return (girls/(girls+boys)) > num ? "<?php echo $boy ?>" : "<?php echo $girl ?>";
 }
 svg.selectAll("circle")
     .data(nodes.slice(1))
