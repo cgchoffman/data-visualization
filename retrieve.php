@@ -44,10 +44,10 @@
 						$skimmer = 2;
 					} else if ($linecount >= 1000 && $linecount < 2000)
 					{
-						$skimmer = 3;	
+						$skimmer = 4;	
 					} else if ($linecount >= 2000)
 					{
-						$skimmer= 4;
+						$skimmer= 5;
 					}
 						
 					while(!feof($file))                       // while eof not reached
