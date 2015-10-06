@@ -57,7 +57,7 @@
 						if (is_array($data)) {                // if decoded data is an array
 							foreach ($data as $key => $value) // iterate through assoc array
 							{
-							   if (strcmp($value, "female"))
+							   if ($value == "female")
 							   {
 									$FEMALE++;
 								}
@@ -78,14 +78,15 @@
 					?>
 					<h1>Data Collision Detection</h1>
 					<div id="body" class="container">
-						<svg width="50" height="50">
-							<circle cx="25" cy="25" r="25" fill="<?php echo $girl ?>" />
+						<svg width="30" height="30">
+							<circle cx="25" cy="25" r="10" fill="<?php echo $girl ?>" />
 						</svg>
-						<strong>Ladies</strong>
-						<svg width="50" height="50">
-							<circle cx="25" cy="25" r="25" fill="<?php echo $boy ?>" />
+						<strong>Ladies: <?php echo $FEMALE ?></strong>
+						
+						<svg width="30" height="30">
+							<circle cx="25" cy="25" r="10" fill="<?php echo $boy ?>" />
 						</svg>
-						<strong>Gentlemen</strong>
+						<strong>Gentlemen: <?php echo $MALE ?></strong>
 						<div id="footer" class="row">
 						
 							<div id="hint" class="col-md-12"></div>
@@ -129,7 +130,7 @@ function colourByPercentage(){
     var girls = <?php echo $FEMALE ?>;
     var boys = <?php echo $MALE ?>;
     var num = Math.random();
-    return (girls/(girls+boys)) > num ? "<?php echo $boy ?>" : "<?php echo $girl ?>";
+    return (girls/(girls+boys)) > num ? "<?php echo $girl ?>" : "<?php echo $boy ?>";
 }
 svg.selectAll("circle")
     .data(nodes.slice(1))
